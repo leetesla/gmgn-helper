@@ -2,14 +2,19 @@
   "name": "gmgn-helper",
   "displayName": "Gmgn helper",
   "version": "0.0.1",
-  "description": "Using side-panel API in an extension",
-  "author": "Plasmo Corp. <foss@plasmo.com>",
+  "description": "Monitor GMGN token prices",
+  "author": "leetesla",
   "scripts": {
     "dev": "plasmo dev",
     "build": "plasmo build",
     "package": "plasmo package"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@plasmohq/messaging": "^0.6.2",
+    "framer-motion": "^10.18.0",
     "plasmo": "0.89.4",
     "react": "18.2.0",
     "react-dom": "18.2.0"
@@ -20,12 +25,25 @@
     "@types/node": "20.11.5",
     "@types/react": "18.2.48",
     "@types/react-dom": "18.2.18",
+    "autoprefixer": "^10.4.20",
+    "postcss": "8.4.33",
     "prettier": "3.2.4",
+    "tailwindcss": "3.4.1",
     "typescript": "5.3.3"
   },
   "manifest": {
     "host_permissions": [
       "https://*/*"
-    ]
+    ],
+    "permissions": [
+      "storage",
+      "sidePanel",
+      "activeTab"
+    ],
+    "externally_connectable": {
+      "matches": [
+        "*://*.localhost.com/*"
+      ]
+    }
   }
 }
