@@ -74,6 +74,22 @@ function WatchlistApp() {
   const [tokenName, setTokenName] = useState("")
 
   useEffect(() => {
+    const button = addWatchButton()
+    if (button) {
+      button.addEventListener('click', () => {
+        const nameElement = document.querySelector('[data-sentry-element="Flex"][data-sentry-source-file="BaseInfoBar.tsx"] .chakra-text')
+        if (nameElement) {
+          setTokenName(nameElement.textContent)
+          setIsModalOpen(true)
+        }
+      })
+    }
+
+    const priceInterval = setInterval(watchPrice, 5000)
+    return () => clearInterval(priceInterval)
+  }, [])
+
+  useEffect(() => {
     const xbutton = addNavToXButton()
     if (xbutton) {
       const handleClick = async () => {
@@ -102,6 +118,8 @@ function WatchlistApp() {
       }
     }
   }, [])
+
+
 
   return (
     <PriceModal
